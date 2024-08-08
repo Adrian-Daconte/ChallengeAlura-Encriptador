@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>ENCRIPTADOR-CHALLENGE</title>
+</head>
+<body>
+
+    <div class="center">
+        <div class="contenedor__principal">
+            <!--contenedor entrada  -->
+            <div class="cont__input">
+                <div class="instrucciones">
+                    <h2>Digita el texto a encriptar</h2>
+                </div>
+                <div class="areaText" >
+                    <textarea  id="area__input" maxlength="500" placeholder="Coloca aquí el texto a Encriptar o Desencriptar "   wrap="soft"></textarea>
+                </div>
+            </div>
+          
+          <!-- Contenedor Botones  -->
+            <div class="cont__botones">
+                <div>
+                    
+                    <h1>ENCRIPTADOR</h1>
+                    <img src="src/assets/Logo.svg" alt="logo">
+                   
+                    <div class="botones">
+                        <button id="botonEncriptar">Encriptar</button>
+                        <button id="botonDesencriptar" disabled >Desencriptar</button>
+                    </div>
+        
+                </div>
+            </div>
+          
+          <!-- contenedor de salida -->
+            <div class="cont__output">
+                <div class="imagen__otput">
+                    <img src="src/assets/imagen.png" alt="logo">
+                   
+                </div>
+                <div class="palabra__output">
+                </div>
+               
+            </div>
+        
+            <!-- Pop Up - Verificacion -->
+            <div class="fondo-popup non">
+                 <div class="div-popup non" >
+                    <div>
+                        <h2>Ups! no se cumple alguna de las siguientes condiciones</h2>
+                        <hr>
+                        <ol>
+                            <li><h3>Únicamente letras minúsculas </h3> </li>
+                            <li><h3>No utilizar letras con acentos ni caracteres especiales</h3>  </li>
+                            <li><h3>No se puede encriptar texto vacío</h3>  </li>
+                        </ol>
+                    </div>
+                    <div class="cerrar-popup">
+                        X
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="src/js/main.js"></script>
+</body>
+</html>

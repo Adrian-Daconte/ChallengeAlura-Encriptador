@@ -1,0 +1,201 @@
+@use "variables" as variables;
+@use "mixins" as mixins;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-size: 16px;
+    background-color: variables.$primary-color;
+}
+h1 {
+    font-family: variables.$fuente-titulo;
+    font-size: 2rem;
+    color: variables.$secondary-color;
+    text-align: center;
+    margin-bottom: 20px;
+
+    @include mixins.movil {
+        font-size: 1.5rem;
+    }
+    @include mixins.tablet {
+        font-size: 1.8rem;
+    }
+}
+h2 {
+    font-family: variables.$fuente-titulo;
+    font-size: 1.5rem;
+    color: variables.$primary-color;
+    text-align: center;
+
+    @include mixins.movil {
+        font-size: 1rem;
+    }
+    @include mixins.tablet {
+        font-size: 1.2rem;
+    }
+}
+
+img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+.center {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    padding: 5%;
+  
+.contenedor__principal {
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    gap: 2rem;
+
+    @include mixins.movil {
+        padding-top: 2rem;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+    }
+    @include mixins.tablet {
+        padding: 2rem;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+    }
+
+    .cont__input {
+        display: flex;
+        flex-direction: column;
+        background-color: variables.$secondary-color;
+        border-radius: 20px;
+        padding-bottom: 2rem;
+        box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.2);
+        order: 1;
+
+        @include mixins.movil {
+            order: 2;
+        }
+
+        .instrucciones {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .areaText {
+            flex-grow: 6;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: variables.$secondary-color;
+
+            cursor: text;
+
+            textarea {
+                height: 100%;
+                width: 90%;
+                border: none;
+                color: variables.$primary-color;
+
+                outline: none;
+                text-align: center;
+                padding: 5%;
+                resize: none;
+                caret-color: variables.$secondary-color;
+                border-radius: 12px;
+                background-color: variables.$quaternary-color;
+            }
+        }
+    }
+    .cont__botones {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        
+       
+        order: 2;
+        @include mixins.movil {
+            order: 1;
+        }
+
+        .botones{
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            padding: 1rem;
+
+            button {
+                padding: 1rem;
+                border: none;
+                border-radius: 12px;
+                background-color: variables.$tertiary-color;
+                color: variables.$primary-color;
+                font-family: variables.$fuente-titulo;
+                font-size: 1.2rem;
+                cursor: pointer;
+                transition: all 0.3s;
+                &:hover {
+                    background-color: variables.$secondary-color;
+                    color: variables.$tertiary-color;
+                }
+            }
+        }
+    }
+    .cont__output {
+        display: flex;
+        flex-direction: column;
+        order: 3;
+
+        background-color: variables.$quaternary-color;
+        border-radius: 20px;
+        box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.2);
+       
+        padding: 15px;
+        gap: 5px;
+        @include mixins.movil {
+            order: 3;
+        }
+        .imagen__otput {
+           background-color: variables.$primary-color;
+            flex: 3;
+        }
+        .palabra__output {
+           
+            flex: 1;
+        }
+    }
+}
+
+.div-popup {
+    padding: 5%;
+    background-color: variables.$secondary-color;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60vw;
+    width: max-content + 20px;
+    transform: translate(-50%, -50%);
+
+    @include mixins.movil {
+        width: 80vw;
+    }
+}
+
+.non {
+    display: none;
+}
+.fondo-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.718);
+    z-index: 100;
+}
+}
