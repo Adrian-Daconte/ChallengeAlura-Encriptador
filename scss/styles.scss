@@ -1,16 +1,17 @@
 @use "variables" as variables;
 @use "mixins" as mixins;
 
-
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-body {
+body , html {
     font-size: 16px;
     background-color: variables.$primary-color;
+    height: 100vh;
+    overflow: hidden;
+   
 }
 h1 {
     font-family: variables.$fuente-titulo;
@@ -19,8 +20,6 @@ h1 {
     text-align: center;
     letter-spacing: 0.1rem;
     margin-bottom: 20px;
-   
-    
 
     @include mixins.movil {
         font-size: 1.5rem;
@@ -48,44 +47,66 @@ img {
     height: auto;
     object-fit: cover;
 }
-.center {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    padding: 5%;
+
+.header {
+    padding: 1%;
+    height: 7.5vh;
+    .logo {
+        width: 5%;
+        margin: auto;
+    }
+
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.2);
+  
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    @include mixins.movil {
+        padding: 2%;
+    }
+    
+}
+
+
+
 
     .contenedor__principal {
         margin: auto;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: 1fr;
+        display: flex;
+        flex-direction: row;
+        height: 85vh;
         gap: 2rem;
+        justify-content: center;
+        align-items: center;
+     
+       
 
         @include mixins.movil {
             padding-top: 2rem;
-            grid-template-columns: repeat(1, 1fr);
-            grid-template-rows: repeat(2, 1fr);
+            flex-direction: column;
         }
         @include mixins.tablet {
             padding: 2rem;
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(3, 1fr);
+          flex-direction: column;
         }
 
         .cont__input {
-          /* From https://css.glass */
-background: rgba(232, 69, 69, 1);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(5px);
--webkit-backdrop-filter: blur(5px);
-border: 1px solid rgba(232, 69, 69, 0.3);
+          width: 30%;
+          height: calc(100% - 2rem);
+            background: rgba(232, 69, 69, 1);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            
 
             display: flex;
             flex-direction: column;
-           
+
             padding-bottom: 2rem;
-            
+
             order: 1;
 
             @include mixins.movil {
@@ -104,7 +125,6 @@ border: 1px solid rgba(232, 69, 69, 0.3);
                 display: flex;
                 justify-content: center;
                 align-items: center;
-               
 
                 cursor: text;
 
@@ -125,14 +145,13 @@ border: 1px solid rgba(232, 69, 69, 0.3);
             }
         }
         .cont__botones {
+            width: 30%;
+            height: calc(100% - 2rem);
             display: flex;
             flex-direction: column;
             justify-content: center;
 
             order: 2;
-            @include mixins.movil {
-                order: 1;
-            }
 
             .botones {
                 display: flex;
@@ -140,13 +159,16 @@ border: 1px solid rgba(232, 69, 69, 0.3);
                 gap: 1.5rem;
                 padding: 1rem;
 
-                
-
                 button {
                     padding: 1rem;
                     border: none;
                     border-radius: 12px;
                     background-color: variables.$tertiary-color;
+
+                    :nth-child(1) {
+                        background-color: variables.$primary-color;
+                        color: variables.$tertiary-color;
+                    }
                     color: variables.$primary-color;
                     font-family: variables.$fuente-subtitulo;
                     font-size: 1.2rem;
@@ -155,25 +177,23 @@ border: 1px solid rgba(232, 69, 69, 0.3);
                     &:hover {
                         background-color: variables.$secondary-color;
                         color: variables.$tertiary-color;
-                        
                     }
                 }
             }
         }
         .cont__output {
+            height: calc(100% - 2rem);
+            width: 30%;
             display: flex;
             flex-direction: column;
             order: 3;
-
+            background-color: variables.$tertiary-color;
             
-
-            background: rgba(255, 255, 255, 0.28);
             border-radius: 16px;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-
+            
             padding: 15px;
             gap: 5px;
             @include mixins.movil {
@@ -183,7 +203,7 @@ border: 1px solid rgba(232, 69, 69, 0.3);
                 margin: auto;
             }
         }
-    }
+   
 
     .div-popup {
         padding: 5%;
@@ -213,3 +233,27 @@ border: 1px solid rgba(232, 69, 69, 0.3);
         z-index: 100;
     }
 }
+
+//-------------------Footer-------------------
+
+  .footer{
+   
+    height: 7.5vh;
+   width: 100%;
+    padding: 1%;
+    .logo {
+        width: 5%;
+        margin: auto;
+    }
+
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.2);
+  
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    @include mixins.movil {
+        padding: 2%;
+    }
+  }

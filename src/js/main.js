@@ -2,10 +2,14 @@ import "../../scss/styles.scss";
 
 import {cerrarPopUp,abrirPopUp } from "./animaciones.js";
 
+
+
 const btnEncriptar = document.querySelector("#botonEncriptar");
 const expresionRegular = /^[a-z\s]+$/;
 export let verificación;
 
+
+console.log("archivo main.js cargado");
 
 
 function revisarTexto() {
@@ -41,4 +45,6 @@ function encriptar() {
 }
 encriptar();
 
-//funcion para  revisar condiciones del texto
+
+
+
