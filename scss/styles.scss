@@ -107,11 +107,14 @@ img {
 
             padding-bottom: 2rem;
 
-            order: 1;
-
             @include mixins.movil {
-                order: 2;
+                width: 80%;
             }
+            @include mixins.tablet {
+                width: 80%;
+            }
+
+            
 
             .instrucciones {
                 flex-grow: 1;
@@ -150,8 +153,13 @@ img {
             display: flex;
             flex-direction: column;
             justify-content: center;
-
-            order: 2;
+            @include mixins.movil {
+                width: 80%;
+            }
+            @include mixins.tablet {
+                width: 80%;
+            }
+          
 
             .botones {
                 display: flex;
@@ -197,7 +205,10 @@ img {
             padding: 15px;
             gap: 5px;
             @include mixins.movil {
-                order: 3;
+                width: 80%;
+            }
+            @include mixins.tablet {
+                width: 80%;
             }
             .imagen__otput {
                 margin: auto;
@@ -220,10 +231,10 @@ img {
         }
     }
 
-    .non {
+    .show {
         display: none;
     }
-    .fondo-popup {
+    .popup {
         position: fixed;
         top: 0;
         left: 0;
