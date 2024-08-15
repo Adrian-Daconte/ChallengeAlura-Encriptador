@@ -1,5 +1,6 @@
-@use "variables" as variables;
-@use "mixins" as mixins;
+@import "variables";
+@import "mixins";
+@import 'animaciones';
 
 * {
   margin: 0;
@@ -9,44 +10,31 @@
 body,
 html {
   font-size: 16px;
-  background-color: variables.$primary-color;
+  background-color: $primary-color;
   height: 100vh;
   overflow: hidden;
 }
 h1 {
-  font-family: variables.$fuente-titulo;
-  font-size: 2rem;
-  color: variables.$secondary-color;
+  @include titulo;
   text-align: center;
   letter-spacing: 0.1rem;
   margin-bottom: 20px;
-
-  @include mixins.movil {
-    font-size: 1.5rem;
-  }
-  @include mixins.tablet {
-    font-size: 1.8rem;
-  }
 }
 h2 {
-  font-family: variables.$fuente-subtitulo;
-  font-size: 1.5rem;
-  color: variables.$primary-color;
+  @include subtitulo;
   text-align: center;
+}
 
-  @include mixins.movil {
-    font-size: 1rem;
-  }
-  @include mixins.tablet {
-    font-size: 1.2rem;
-  }
+p,
+span {
+  @include texto;
+  text-align: center;
 }
 
 img {
   width: 100%;
   height: auto;
   vertical-align: top;
-
 }
 // -----------------------//
 //     HEADER           //
@@ -64,49 +52,38 @@ img {
   gap: 1rem;
   align-items: center;
 
-
-  img{
+  img {
     object-fit: contain;
   }
 
-
   .logo_one {
-    width: 8%;
-    @include mixins.movil {
-      width: 20%;  
-          
+    max-height: 100%;
+    width: 10%;
+    @include movil {
+      width: 16%;
     }
-    @include mixins.tablet {
-      width: 12%;  
-          
-    }
-  }
-  .logo_alura{
-    width: 6%;
-    @include mixins.movil {
-      width: 18%;  
-          
-    }
-    @include mixins.tablet {
-      width: 10%;  
-          
+    @include tablet {
+      width: 10%;
     }
   }
-  
+  .logo_alura {
+    max-height: 100%;
+    width: 10%;
+    @include movil {
+      width: 15%;
+    }
+    @include tablet {
+      width: 11%;
+    }
+  }
 
-  .separador{
+  .separador {
     height: 100%;
     width: 2px;
     background-color: white;
-  
   }
 
-
- 
-
-  
-
-  @include mixins.movil {
+  @include movil {
     padding: 2%;
     height: 10vh;
   }
@@ -123,7 +100,7 @@ img {
   justify-content: center;
   align-items: center;
 
-  @include mixins.movil {
+  @include movil {
     padding-top: 1rem;
     gap: 1.5rem;
     flex-direction: column;
@@ -131,7 +108,7 @@ img {
     height: 80vh;
     padding-bottom: 1rem;
   }
-  @include mixins.tablet {
+  @include tablet {
     padding: 2rem;
     flex-direction: column;
   }
@@ -145,18 +122,17 @@ img {
 
     width: 30%;
     height: 90%;
-    background-color: variables.$secondary-color;
+    background-color: $secondary-color;
     border-radius: 16px;
-    
 
     display: flex;
     flex-direction: column;
 
-    @include mixins.movil {
+    @include movil {
       width: 90%;
       height: 100%;
     }
-    @include mixins.tablet {
+    @include tablet {
       width: 80%;
     }
 
@@ -180,15 +156,15 @@ img {
         height: 100%;
         width: 100%;
         border: none;
-        color: variables.$primary-color;
-        font-family: variables.$fuente-texto;
+        color: $primary-color;
+        font-family: $fuente-texto;
         outline: none;
         text-align: center;
         padding: 2%;
         resize: none;
-        caret-color: variables.$secondary-color;
+        caret-color: $secondary-color;
         border-radius: 12px;
-        background-color: variables.$tertiary-color;
+        background-color: $tertiary-color;
       }
     }
   }
@@ -201,12 +177,18 @@ img {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    @include mixins.movil {
+
+    @include movil {
       height: 60%;
       width: 60%;
     }
-    @include mixins.tablet {
+    @include tablet {
       width: 80%;
+    }
+
+    h1 {
+      @include titulo;
+      text-shadow: rgba(0, 0, 0, 0.67) 0px 10px 24px;
     }
 
     .botones {
@@ -219,20 +201,20 @@ img {
         padding: 1rem;
         border: none;
         border-radius: 12px;
-        background-color: variables.$tertiary-color;
+        background-color: $tertiary-color;
 
         -webkit-box-shadow: 10px 10px 11px 0px rgba(0, 0, 0, 0.36);
         -moz-box-shadow: 10px 10px 11px 0px rgba(0, 0, 0, 0.36);
         box-shadow: 10px 10px 11px 0px rgba(0, 0, 0, 0.36);
 
-        color: variables.$primary-color;
-        font-family: variables.$fuente-subtitulo;
+        color: $primary-color;
+        font-family: $fuente-subtitulo;
         font-size: 1.2rem;
         cursor: pointer;
         transition: all 0.3s;
         &:hover {
-          background-color: variables.$secondary-color;
-          color: variables.$tertiary-color;
+          background-color: $secondary-color;
+          color: $tertiary-color;
         }
       }
     }
@@ -246,7 +228,7 @@ img {
     display: flex;
     flex-direction: column;
     order: 3;
-    background-color: variables.$tertiary-color;
+    background-color: $tertiary-color;
 
     -webkit-box-shadow: 10px 10px 11px 0px rgba(0, 0, 0, 0.36);
     -moz-box-shadow: 10px 10px 11px 0px rgba(0, 0, 0, 0.36);
@@ -255,31 +237,46 @@ img {
 
     padding: 15px;
     gap: 5px;
-    @include mixins.movil {
+    @include movil {
       width: 90%;
       height: 100%;
     }
-    @include mixins.tablet {
+    @include tablet {
       width: 80%;
     }
     .imagen__otput {
       margin: auto;
     }
   }
-
+  // ----------------------//
+  //        POP UP         //
+  // ----------------------//
   .div-popup {
-    padding: 5%;
-    background-color: variables.$secondary-color;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: $tertiary-color;
     position: absolute;
     top: 50%;
     left: 50%;
     width: 60vw;
     width: max-content + 20px;
     transform: translate(-50%, -50%);
-
-    @include mixins.movil {
+    gap: 1rem;
+    
+    @include movil {
+      width: 90vw;
+    }
+    @include tablet {
       width: 80vw;
     }
+    ul{
+      list-style-type:none;
+    }
+   p{
+    color: $primary-color;
+   }
   }
 
   .show {
@@ -302,19 +299,37 @@ img {
 .footer {
   height: 7.5vh;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
 
   background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
+  
 
-  padding: 1rem;
-  .footer__text{
-    width: 30%;
-    text-align: center;
-    margin: auto;
-    font-family: variables.$fuente-texto;
-    color: variables.$tertiary-color;
+  .footer__text {
+    display: inline-block;
+    span{
+      color: $primary-color;
+    }
+  
+  }
+  @include movil {
+    height: 10vh;
+  }
 
+  .footer__logos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    .logo_fotter{
+      width: 1rem;
+    }
   }
 }

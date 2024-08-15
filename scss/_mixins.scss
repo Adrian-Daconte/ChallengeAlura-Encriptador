@@ -1,5 +1,5 @@
-//mixins dispositivos
 
+//mixins dispositivos
 @mixin movil {
   @media (max-width: 600px) { @content; }
 }
@@ -10,3 +10,48 @@
   @media (min-width: 901px)  { @content; }
 }
 
+//mixins de texto
+
+//H1
+@mixin titulo {
+  font-family: $fuente-titulo;
+  font-size: 2rem;
+  color: $secondary-color;
+  @media (max-width: 600px) {
+    font-size: 1.5rem;
+  }
+  @media (min-width: 601px) and (max-width:900px) {
+    font-size: 1.8rem;
+  }
+  
+}
+
+//H2
+@mixin subtitulo {
+  font-family: $fuente-subtitulo;
+  font-size: 1.5rem;
+  color: $secondary-color;
+  font-weight: 600;
+  @media (max-width: 600px) {
+    font-size: 1rem;
+  }
+  @media (min-width: 601px) and (max-width:900px) {
+    font-size: 1.2rem;
+  }
+  color: $primary-color;
+}
+
+//P
+@mixin texto {
+  font-family: $fuente-texto;
+  font-size: 1rem;
+  color: $tertiary-color;
+  font-weight: 400;
+  @media (max-width: 600px) {
+    font-size: 0.8rem;
+  }
+  @media (min-width: 601px) and (max-width:900px) {
+    font-size: 0.9rem;
+  }
+  
+}
