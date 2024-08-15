@@ -2,269 +2,319 @@
 @use "mixins" as mixins;
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-body , html {
-    font-size: 16px;
-    background-color: variables.$primary-color;
-    height: 100vh;
-    overflow: hidden;
-   
+body,
+html {
+  font-size: 16px;
+  background-color: variables.$primary-color;
+  height: 100vh;
+  overflow: hidden;
 }
 h1 {
-    font-family: variables.$fuente-titulo;
-    font-size: 2rem;
-    color: variables.$secondary-color;
-    text-align: center;
-    letter-spacing: 0.1rem;
-    margin-bottom: 20px;
+  font-family: variables.$fuente-titulo;
+  font-size: 2rem;
+  color: variables.$secondary-color;
+  text-align: center;
+  letter-spacing: 0.1rem;
+  margin-bottom: 20px;
 
-    @include mixins.movil {
-        font-size: 1.5rem;
-    }
-    @include mixins.tablet {
-        font-size: 1.8rem;
-    }
+  @include mixins.movil {
+    font-size: 1.5rem;
+  }
+  @include mixins.tablet {
+    font-size: 1.8rem;
+  }
 }
 h2 {
-    font-family: variables.$fuente-subtitulo;
-    font-size: 1.5rem;
-    color: variables.$primary-color;
-    text-align: center;
+  font-family: variables.$fuente-subtitulo;
+  font-size: 1.5rem;
+  color: variables.$primary-color;
+  text-align: center;
 
-    @include mixins.movil {
-        font-size: 1rem;
-    }
-    @include mixins.tablet {
-        font-size: 1.2rem;
-    }
+  @include mixins.movil {
+    font-size: 1rem;
+  }
+  @include mixins.tablet {
+    font-size: 1.2rem;
+  }
 }
 
 img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
+  width: 100%;
+  height: auto;
+  vertical-align: top;
+
 }
+// -----------------------//
+//     HEADER           //
+// ----------------------//
 
 .header {
-    padding: 1%;
-    height: 7.5vh;
-    .logo {
-        width: 5%;
-        margin: auto;
-    }
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 
-    /* From https://css.glass */
-    background: rgba(255, 255, 255, 0.2);
-  
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+  padding: 1%;
+  height: 7.5vh;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
 
+
+  img{
+    object-fit: contain;
+  }
+
+
+  .logo_one {
+    width: 8%;
     @include mixins.movil {
-        padding: 2%;
-    }
-    
-}
-
-
-
-
-    .contenedor__principal {
-        margin: auto;
-        display: flex;
-        flex-direction: row;
-        height: 85vh;
-        gap: 2rem;
-        justify-content: center;
-        align-items: center;
-     
-       
-
-        @include mixins.movil {
-            padding-top: 2rem;
-            flex-direction: column;
-        }
-        @include mixins.tablet {
-            padding: 2rem;
-          flex-direction: column;
-        }
-
-        .cont__input {
-          width: 30%;
-          height: calc(100% - 2rem);
-            background: rgba(232, 69, 69, 1);
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            
-
-            display: flex;
-            flex-direction: column;
-
-            padding-bottom: 2rem;
-
-            @include mixins.movil {
-                width: 80%;
-            }
-            @include mixins.tablet {
-                width: 80%;
-            }
-
-            
-
-            .instrucciones {
-                flex-grow: 1;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            .areaText {
-                flex-grow: 6;
-                box-sizing: border-box;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-                cursor: text;
-
-                textarea {
-                    height: 100%;
-                    width: 90%;
-                    border: none;
-                    color: variables.$primary-color;
-                    font-family: variables.$fuente-texto;
-                    outline: none;
-                    text-align: center;
-                    padding: 5%;
-                    resize: none;
-                    caret-color: variables.$secondary-color;
-                    border-radius: 12px;
-                    background-color: variables.$tertiary-color;
-                }
-            }
-        }
-        .cont__botones {
-            width: 30%;
-            height: calc(100% - 2rem);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            @include mixins.movil {
-                width: 80%;
-            }
-            @include mixins.tablet {
-                width: 80%;
-            }
+      width: 20%;  
           
-
-            .botones {
-                display: flex;
-                flex-direction: column;
-                gap: 1.5rem;
-                padding: 1rem;
-
-                button {
-                    padding: 1rem;
-                    border: none;
-                    border-radius: 12px;
-                    background-color: variables.$tertiary-color;
-
-                    :nth-child(1) {
-                        background-color: variables.$primary-color;
-                        color: variables.$tertiary-color;
-                    }
-                    color: variables.$primary-color;
-                    font-family: variables.$fuente-subtitulo;
-                    font-size: 1.2rem;
-                    cursor: pointer;
-                    transition: all 0.3s;
-                    &:hover {
-                        background-color: variables.$secondary-color;
-                        color: variables.$tertiary-color;
-                    }
-                }
-            }
-        }
-        .cont__output {
-            height: calc(100% - 2rem);
-            width: 30%;
-            display: flex;
-            flex-direction: column;
-            order: 3;
-            background-color: variables.$tertiary-color;
-            
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            
-            padding: 15px;
-            gap: 5px;
-            @include mixins.movil {
-                width: 80%;
-            }
-            @include mixins.tablet {
-                width: 80%;
-            }
-            .imagen__otput {
-                margin: auto;
-            }
-        }
-   
-
-    .div-popup {
-        padding: 5%;
-        background-color: variables.$secondary-color;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 60vw;
-        width: max-content + 20px;
-        transform: translate(-50%, -50%);
-
-        @include mixins.movil {
-            width: 80vw;
-        }
     }
-
-    .show {
-        display: none;
-    }
-    .popup {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background-color: rgba(0, 0, 0, 0.718);
-        z-index: 100;
-    }
-}
-
-//-------------------Footer-------------------
-
-  .footer{
-   
-    height: 7.5vh;
-   width: 100%;
-    padding: 1%;
-    .logo {
-        width: 5%;
-        margin: auto;
-    }
-
-    /* From https://css.glass */
-    background: rgba(255, 255, 255, 0.2);
-  
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-
-    @include mixins.movil {
-        padding: 2%;
+    @include mixins.tablet {
+      width: 12%;  
+          
     }
   }
+  .logo_alura{
+    width: 6%;
+    @include mixins.movil {
+      width: 18%;  
+          
+    }
+    @include mixins.tablet {
+      width: 10%;  
+          
+    }
+  }
+  
+
+  .separador{
+    height: 100%;
+    width: 2px;
+    background-color: white;
+  
+  }
+
+
+ 
+
+  
+
+  @include mixins.movil {
+    padding: 2%;
+    height: 10vh;
+  }
+}
+// -----------------------//
+//  CONTENEDOR PRINCIPAL //
+// ----------------------//
+.contenedor__principal {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  height: 85vh;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+
+  @include mixins.movil {
+    padding-top: 1rem;
+    gap: 1.5rem;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 80vh;
+    padding-bottom: 1rem;
+  }
+  @include mixins.tablet {
+    padding: 2rem;
+    flex-direction: column;
+  }
+  // -----------------------//
+  //  CONTENEDOR ENTRADA   //
+  // ----------------------//
+  .cont__input {
+    -webkit-box-shadow: 10px 10px 11px 0px rgba(0, 0, 0, 0.36);
+    -moz-box-shadow: 10px 10px 11px 0px rgba(0, 0, 0, 0.36);
+    box-shadow: 10px 10px 11px 0px rgba(0, 0, 0, 0.36);
+
+    width: 30%;
+    height: 90%;
+    background-color: variables.$secondary-color;
+    border-radius: 16px;
+    
+
+    display: flex;
+    flex-direction: column;
+
+    @include mixins.movil {
+      width: 90%;
+      height: 100%;
+    }
+    @include mixins.tablet {
+      width: 80%;
+    }
+
+    .instrucciones {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .areaText {
+      flex-grow: 6;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2%;
+
+      cursor: text;
+
+      textarea {
+        height: 100%;
+        width: 100%;
+        border: none;
+        color: variables.$primary-color;
+        font-family: variables.$fuente-texto;
+        outline: none;
+        text-align: center;
+        padding: 2%;
+        resize: none;
+        caret-color: variables.$secondary-color;
+        border-radius: 12px;
+        background-color: variables.$tertiary-color;
+      }
+    }
+  }
+  // -----------------------//
+  //  CONTENEDOR BOTONES   //
+  // ----------------------//
+  .cont__botones {
+    width: 30%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    @include mixins.movil {
+      height: 60%;
+      width: 60%;
+    }
+    @include mixins.tablet {
+      width: 80%;
+    }
+
+    .botones {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      padding: 1rem;
+
+      button {
+        padding: 1rem;
+        border: none;
+        border-radius: 12px;
+        background-color: variables.$tertiary-color;
+
+        -webkit-box-shadow: 10px 10px 11px 0px rgba(0, 0, 0, 0.36);
+        -moz-box-shadow: 10px 10px 11px 0px rgba(0, 0, 0, 0.36);
+        box-shadow: 10px 10px 11px 0px rgba(0, 0, 0, 0.36);
+
+        color: variables.$primary-color;
+        font-family: variables.$fuente-subtitulo;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        &:hover {
+          background-color: variables.$secondary-color;
+          color: variables.$tertiary-color;
+        }
+      }
+    }
+  }
+  // ----------------------//
+  //  CONTENEDOR SALIDA    //
+  // ----------------------//
+  .cont__output {
+    height: 90%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    order: 3;
+    background-color: variables.$tertiary-color;
+
+    -webkit-box-shadow: 10px 10px 11px 0px rgba(0, 0, 0, 0.36);
+    -moz-box-shadow: 10px 10px 11px 0px rgba(0, 0, 0, 0.36);
+    box-shadow: 10px 10px 11px 0px rgba(0, 0, 0, 0.36);
+    border-radius: 16px;
+
+    padding: 15px;
+    gap: 5px;
+    @include mixins.movil {
+      width: 90%;
+      height: 100%;
+    }
+    @include mixins.tablet {
+      width: 80%;
+    }
+    .imagen__otput {
+      margin: auto;
+    }
+  }
+
+  .div-popup {
+    padding: 5%;
+    background-color: variables.$secondary-color;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60vw;
+    width: max-content + 20px;
+    transform: translate(-50%, -50%);
+
+    @include mixins.movil {
+      width: 80vw;
+    }
+  }
+
+  .show {
+    display: none;
+  }
+  .popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.718);
+    z-index: 100;
+  }
+}
+
+// -----------------------//
+//        FOOTER        //
+// ----------------------//
+.footer {
+  height: 7.5vh;
+  width: 100%;
+
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+
+  padding: 1rem;
+  .footer__text{
+    width: 30%;
+    text-align: center;
+    margin: auto;
+    font-family: variables.$fuente-texto;
+    color: variables.$tertiary-color;
+
+  }
+}

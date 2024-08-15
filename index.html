@@ -1,85 +1,94 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0 , maximum-scale=1, user-scalable=no">
-    <link rel="shortcut icon" href="src/assets/Logo.svg" type="image/x-icon">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0 , maximum-scale=1, user-scalable=no"
+    />
+    <link rel="shortcut icon" href="src/assets/Logo.svg" type="image/x-icon" />
     <title>ENCRIPTADOR-CHALLENGE</title>
-</head>
-<body>
-
-    <!-- Header  -->
-    <header>    
-
-        <div class="header">
-            
-            
-        </div>
-
+  </head>
+  <body>
+    <!-- Inicia Header  -->
+    <header>
+      <div class="header">
+        <img class="logo_one" src="src/assets/oracle-one-logo-blanco.svg" alt="logo one" >
+        <div class="separador"></div>
+        <img class="logo_alura" src="src/assets/alura-logo.1720710819.svg" alt="logo alura">
+    </div>
     </header>
     <div class="center">
-        <div class="contenedor__principal">
-            <!--contenedor entrada  -->
-            <div class="cont__input">
-                <div class="instrucciones">
-                    <h2>Digita el texto a encriptar</h2>
-                </div>
-                <div class="areaText" >
-                    <textarea  id="area__input" maxlength="500" placeholder="Coloca aquí el texto a Encriptar o Desencriptar "   wrap="soft"></textarea>
-                </div>
-            </div>
-          
-          <!-- Contenedor Botones  -->
-            <div class="cont__botones">
-                <div>
-                    
-                    <h1>ENCRIPTADOR</h1>
-                    
-                   
-                    <div class="botones">
-                        <button id="botonEncriptar">Encriptar</button>
-                        <button id="botonDesencriptar" disabled >Desencriptar</button>
-                    </div>
-        
-                </div>
-            </div>
-          
-          <!-- contenedor de salida -->
-            <div class="cont__output">
-                <div class="imagen__otput">
-                   
-                   
-                </div>
-                <div class="palabra__output">
-                </div>
-               
-            </div>
-        
-            <!-- Pop Up - Verificacion -->
-            <div class="popup show">
-                 <div class="div-popup" >
-                    <div>
-                        <h2>Ups! no se cumple alguna de las siguientes condiciones</h2>
-                        <hr>
-                        <ol>
-                            <li><h3>Únicamente letras minúsculas </h3> </li>
-                            <li><h3>No utilizar letras con acentos ni caracteres especiales</h3>  </li>
-                            <li><h3>No se puede encriptar texto vacío</h3>  </li>
-                        </ol>
-                    </div>
-                    <div class="closePopup">
-                        X
-                    </div>
-                 </div>
-            </div>
-        </div>
-    </div>
-    <!-- Footer -->
-     <footer>
-        <div class="footer">
+      <div class="contenedor__principal"> <!-- Finaliza  Header  -->
 
+        <!-- animacion estrellas   -->
+
+
+        <!--contenedor entrada  -->
+        <div class="cont__input">
+          <div class="instrucciones">
+            <h2>Digita el texto a encriptar</h2>
+          </div>
+          <div class="areaText">
+            <textarea
+              id="area__input"
+              maxlength="500"
+              placeholder="Coloca aquí el texto a Encriptar o Desencriptar "
+              wrap="soft"
+            ></textarea>
+          </div>
+        </div><!-- Finaliza  contenedor entrada  -->
+
+        <!-- Contenedor Botones  -->
+        <div class="cont__botones">
+          <div>
+            <h1>ENCRIPTADOR</h1>
+
+            <div class="botones">
+              <button id="botonEncriptar">Encriptar</button>
+              <button id="botonDesencriptar" disabled>Desencriptar</button>
+            </div>
+          </div>
+        </div><!-- Finaliza  Contenedor Botones  -->
+
+        <!-- contenedor de salida -->
+        <div class="cont__output">
+          <div class="imagen__otput"></div>
+          <div class="palabra__output"></div>
+        </div><!-- Finaliza  contenedor de Salida  -->
+
+        <!-- Pop Up - Verificacion -->
+        <div class="popup show">
+          <div class="div-popup">
+            <div>
+              <h2>Ups! no se cumple alguna de las siguientes condiciones</h2>
+              <hr />
+              <ol>
+                <li><h3>Únicamente letras minúsculas</h3></li>
+                <li>
+                  <h3>
+                    No utilizar letras con acentos ni caracteres especiales
+                  </h3>
+                </li>
+                <li><h3>No se puede encriptar texto vacío</h3></li>
+              </ol>
+            </div>
+            <div class="closePopup">X</div>
+          </div>
         </div>
-     </footer>
+      </div>
+    </div><!-- Finaliza  Popup  -->
+
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer">
+        <div class="footer__text">
+            <p>Desarrollado por : <span>Adrian Daconte</span></p>
+        </div>
+    </div><!-- Finaliza  footer  -->
+        
+    </footer>
     <script type="module" src="src/js/main.js"></script>
-</body>
+  </body>
 </html>
