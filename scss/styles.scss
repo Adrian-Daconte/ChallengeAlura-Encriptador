@@ -18,7 +18,7 @@ h1 {
   @include titulo;
   text-align: center;
   letter-spacing: 0.1rem;
-  margin-bottom: 20px;
+ 
 }
 h2 {
   @include subtitulo;
@@ -47,6 +47,8 @@ img {
   -webkit-backdrop-filter: blur(5px);
 
   padding: 1%;
+  padding-left: 5%;
+  padding-right: 5%;
   height: 7.5vh;
   display: flex;
   gap: 1rem;
@@ -77,6 +79,7 @@ img {
     }
   }
 
+
   .separador {
     height: 100%;
     width: 2px;
@@ -86,6 +89,15 @@ img {
   @include movil {
     padding: 2%;
     height: 10vh;
+  }
+
+  .div_texto_animado{
+    margin-left: auto;
+    .typedAnimado_header{
+      color: $secondary-color;
+      font-weight: bold;
+
+    }
   }
 }
 // -----------------------//
@@ -130,7 +142,7 @@ img {
 
     @include movil {
       width: 90%;
-      height: 100%;
+      
     }
     @include tablet {
       width: 80%;
@@ -179,7 +191,8 @@ img {
     justify-content: center;
 
     @include movil {
-      height: 60%;
+      
+      
       width: 60%;
     }
     @include tablet {
@@ -189,6 +202,7 @@ img {
     h1 {
       @include titulo;
       text-shadow: rgba(0, 0, 0, 0.67) 0px 10px 24px;
+      
     }
 
     .botones {
@@ -198,7 +212,7 @@ img {
       padding: 1rem;
 
       button {
-        padding: 1rem;
+        padding: 1.5%;
         border: none;
         border-radius: 12px;
         background-color: $tertiary-color;
@@ -226,7 +240,8 @@ img {
     height: 90%;
     width: 30%;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     order: 3;
     background-color: $tertiary-color;
 
@@ -235,17 +250,23 @@ img {
     box-shadow: 10px 10px 11px 0px rgba(0, 0, 0, 0.36);
     border-radius: 16px;
 
-    padding: 15px;
-    gap: 5px;
+    
+   
     @include movil {
       width: 90%;
-      height: 100%;
+      height: 60%;
+      
     }
     @include tablet {
       width: 80%;
+      
     }
-    .imagen__otput {
-      margin: auto;
+    
+
+    .salida_texto{
+     
+      color: $primary-color;
+
     }
   }
   // ----------------------//
@@ -267,6 +288,7 @@ img {
     
     @include movil {
       width: 90vw;
+      
     }
     @include tablet {
       width: 80vw;

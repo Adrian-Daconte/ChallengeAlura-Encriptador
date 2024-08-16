@@ -1,6 +1,10 @@
 import "../../scss/styles.scss"; //importando el archivo de estilos
 
-//-------------VARIABLES  ------------------
+import Typed from "typed.js"; //importando la libreria typed.js para animaciones de texto
+
+//--------------------------------------------- //
+//                 VARIABLES                    //
+//--------------------------------------------- //
 const expresionRegular = /^[a-z\s]+$/; //expresion regular para validar el texto ingresado3
 const botonEncriptar = document.querySelector("#botonEncriptar"); //DOM boton encriptar
 let textoIngresado = ''; //DOM texto ingresado
@@ -8,30 +12,34 @@ let estadoVerificado; //variable para almacenar el estado de verificacion del te
 let textoEncriptado = []; //variable para almacenar el texto encriptado
 const popup = document.querySelector(".popup"); //DOM popup
 const btnClosePopup = document.querySelector(".closePopup") //DOM btn cerrar popup
-const divOutput = document.querySelector('.cont__output');
 
 
 
-//-------------ADD EVENT LISTENER ------------------
+//--------------------------------------------- //
+//              ADD EVENT LISTENER              //
+//--------------------------------------------- //
 
 //cerrar popup y reiniciar valor del input 
-
 btnClosePopup.addEventListener('click',(e)=>{
    
     popup.classList.add('show')
-    console.log(popup);
+    
     document.querySelector("#area__input").value = '';
 })
 
 //btn encriptar
-botonEncriptar.addEventListener('click',(e)=>{
+ botonEncriptar.addEventListener('click',(e)=>{
     
     verificacioTexto();
+   
     outputResult();
+   
     
 })
 
-//-------------FUNCIONES ------------------
+//--------------------------------------------- //
+//                FUNCIONES                     //
+//--------------------------------------------- //
 
 //funcion para encriptar el texto ingresado
 const encriptacionTexto = () => {
@@ -98,13 +106,55 @@ const popupOpen = () =>{
 
 //funcion mostrar resultado en output
 const outputResult = () => {
-  const newDiv = document.createElement('div');
-  newDiv.className = 'output_result';
-  newDiv.innerHTML = `<h2>${textoEncriptado}</h2>`;
-  divOutput.appendChild(newDiv);
+  const divOutput = document.querySelector('.cont__output');
+  let salidaTexto = divOutput.querySelector('.salida_texto');
+
+  if (!salidaTexto) {
+    
+    salidaTexto = document.createElement('p');
+    salidaTexto.classList.add('salida_texto');
+    divOutput.appendChild(salidaTexto);
+  }
+
+
+ setInterval(() => {
+  salidaTexto.textContent = `Texto encriptado: ${textoEncriptado}`;
+ }, 2000);
+
+  typedOutput();
+  console.log(textoEncriptado);
+  console.log(salidaTexto);
 };
 
 
+//--------------------------------------------- //
+//             ANIMACIONES                      //
+//--------------------------------------------- //
+
+//animacion con libreria typed.js para texto en el header
+const typed = new Typed('.typedAnimado_header', {
+  strings: [
+    '<i class="animado">ENCRIPTAR</i>',
+    '<i class="animado">DESENCRIPTAR</i>'],
+  typeSpeed: 100,
+  loop: true,
+  backSpeed: 100,
+});
+
+
+//animacion con libreria typed.js para la salidad del texto encriptado
+const typedOutput = ()=>{ new Typed('.salida_texto', {
+  strings: [
+    'Encriptando .',
+    '..',
+    'Encriptando ...',
+   
+   
+  ],
+  typeSpeed: 1,
+  loopCount: 1,
+ 
+})};
 
 
 
