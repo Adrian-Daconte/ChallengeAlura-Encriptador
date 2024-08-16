@@ -7,11 +7,14 @@ import Typed from "typed.js"; //importando la libreria typed.js para animaciones
 //--------------------------------------------- //
 const expresionRegular = /^[a-z\s]+$/; //expresion regular para validar el texto ingresado3
 const botonEncriptar = document.querySelector("#botonEncriptar"); //DOM boton encriptar
-let textoIngresado = ''; //DOM texto ingresado
-let estadoVerificado; //variable para almacenar el estado de verificacion del texto ingresado
+const botonDesencriptar = document.querySelector("#botonDesencriptar"); //DOM boton desencriptar
+let textoIngresado = ""; //DOM texto ingresado
 let textoEncriptado = []; //variable para almacenar el texto encriptado
+let textoDesencriptado = []; //variable para almacenar el texto desencriptado
 const popup = document.querySelector(".popup"); //DOM popup
-const btnClosePopup = document.querySelector(".closePopup") //DOM btn cerrar popup
+const btnClosePopup = document.querySelector(".closePopup"); //DOM btn cerrar popup
+let clickEncriptar = undefined;
+let clickDesencriptar = undefined;
 
 
 
@@ -19,23 +22,37 @@ const btnClosePopup = document.querySelector(".closePopup") //DOM btn cerrar pop
 //              ADD EVENT LISTENER              //
 //--------------------------------------------- //
 
-//cerrar popup y reiniciar valor del input 
-btnClosePopup.addEventListener('click',(e)=>{
-   
-    popup.classList.add('show')
-    
-    document.querySelector("#area__input").value = '';
-})
+//evento para limpiar el input al cargar la pagina
+addEventListener("DOMContentLoaded", (e) => {
+  limpiarInput();
+  limpiarOutput();
+});
+
+//cerrar popup
+btnClosePopup.addEventListener("click", (e) => {
+  popup.classList.add("show");
+});
 
 //btn encriptar
- botonEncriptar.addEventListener('click',(e)=>{
-    
-    verificacioTexto();
-   
-    outputResult();
-   
-    
-})
+botonEncriptar.addEventListener("click", (e) => {
+  ;
+  clickEncriptar = true;
+  clickDesencriptar = false;
+  limpiarOutput();
+  verificacioTexto();
+  console.log('click encriptar es ' + clickEncriptar);
+ 
+  
+  
+});
+
+//btn desencriptar
+botonDesencriptar.addEventListener("click", (e) => {
+  clickDesencriptar = true;
+  clickEncriptar = false;
+  limpiarOutput();
+verificacioTexto();
+});
 
 //--------------------------------------------- //
 //                FUNCIONES                     //
@@ -43,119 +60,186 @@ btnClosePopup.addEventListener('click',(e)=>{
 
 //funcion para encriptar el texto ingresado
 const encriptacionTexto = () => {
-    textoEncriptado = [];
-    textoIngresado = document.querySelector("#area__input").value;
-    textoIngresado= textoIngresado.split("");
-    textoIngresado.map((letra) => {
+  
+  textoEncriptado = [];
+  textoIngresado = document.querySelector("#area__input").value;
+  textoIngresado = textoIngresado.split("");
+  textoIngresado
+    .map((letra) => {
       //switch para la condicional de encriptacion
       switch (letra) {
         case "a":
           return textoEncriptado.push("ai");
           break;
-  
+
         case "e":
           return textoEncriptado.push("enter");
           break;
-  
+
         case "i":
           return textoEncriptado.push("imes");
           break;
-  
+
         case "o":
           return textoEncriptado.push("ober");
           break;
         case "u":
           return textoEncriptado.push("ufat");
           break;
-  
+
         default:
           return textoEncriptado.push(letra);
           break;
       }
-      
-    }).join('');
+    })
+    .join("");
+
+  return (textoEncriptado = textoEncriptado.join(""));
+  console.log(textoEncriptado);
+};
+
+//funcion para desencriptar el texto ingresado
+const desencriptacionTexto = () => {
   
-    return textoEncriptado = textoEncriptado.join('')
-    console.log(textoEncriptado);
+  textoIngresado = document.querySelector("#area__input").value;
+
+
+  const matrizEncriptacion = [
+    ["ai", "a"],
+    ["enter", "e"],
+    ["imes", "i"],
+    ["ober", "o"],
+    ["ufat", "u"],
+  ];
+
+  matrizEncriptacion.forEach(([elemento, valor]) => {
+    textoIngresado = textoIngresado.replace(new RegExp(elemento, "g"), valor);
+    textoDesencriptado = textoIngresado;
+    console.log(' el texto desencriptado es ' + textoDesencriptado);
     
-  }; 
+  });
+
+
+
+};
 
 //funcion para verificar si el texto ingresado es valido
 const verificacioTexto = () => {
-    textoIngresado = document.querySelector("#area__input").value;
-    console.log('el texto recibido es '+textoIngresado);
-    
-    if (expresionRegular.test(textoIngresado)) {
+  textoIngresado = document.querySelector("#area__input").value;
+  console.log("el texto recibido es " + textoIngresado);
+
+  
+
+  if (expresionRegular.test(textoIngresado)) {
     console.log("el texto es valido");
-    encriptacionTexto();
-    return (estadoVerificado = true);
-  } else {
-    console.log("el texto NO es valido");
-   popupOpen();
-    return (estadoVerificado = false);
+    if (clickEncriptar==true) {
+     
+      encriptacionTexto();
+      outputResult();
+      console.log('click encriptar en verificacion es ' + clickEncriptar);
+      
+    } else { 
+    if (clickDesencriptar==true) {
+      desencriptacionTexto();
+      outputResult();
+      
+    } else {
+      
+    }
+    }
   }
+  else {
+    console.log("el texto NO es valido");
+    popupOpen();
+    limpiarInput();
+  }
+
 };
 
 //funcion abrir popup
-const popupOpen = () =>{
-
-    
-    popup.classList.remove('show')
-    
-}
+const popupOpen = () => {
+  popup.classList.remove("show");
+};
 
 //funcion mostrar resultado en output
 const outputResult = () => {
-  const divOutput = document.querySelector('.cont__output');
-  let salidaTexto = divOutput.querySelector('.salida_texto');
+  const divOutput = document.querySelector(".div_output");
+  let salidaTexto = divOutput.querySelector(".salida_texto");
+  let tituloSalida = divOutput.querySelector(".titulo_salida");
+  const divImagenOutput = document.querySelector(".imagen_ouput");
 
   if (!salidaTexto) {
-    
-    salidaTexto = document.createElement('p');
-    salidaTexto.classList.add('salida_texto');
+    salidaTexto = document.createElement("p");
+    tituloSalida = document.createElement("h2");
+    salidaTexto.classList.add("salida_texto");
+    tituloSalida.classList.add("titulo_salida");
+    divOutput.appendChild(tituloSalida);
     divOutput.appendChild(salidaTexto);
+    
+  
   }
+  setTimeout(() => {
+    
+    console.log('click encriptar en output es ' + clickEncriptar);
+    if ( clickEncriptar==true){
 
+      tituloSalida.textContent = "Texto encriptado";
+      salidaTexto.textContent = textoEncriptado;
+      divImagenOutput.setAttribute('style','display:none');
 
- setInterval(() => {
-  salidaTexto.textContent = `Texto encriptado: ${textoEncriptado}`;
- }, 2000);
+    }else {
+      if (clickDesencriptar==true) {
+        tituloSalida.textContent = "Texto desencriptado";
+        salidaTexto.textContent = textoDesencriptado;
+        divImagenOutput.setAttribute('style','display:none');
+      }
+    }
+    
 
+  }, 5000);
+  console.log('click encriptar al finalizar  todas las tareas es es  ' + clickEncriptar);
   typedOutput();
   console.log(textoEncriptado);
   console.log(salidaTexto);
+  
 };
 
+//funcion para limpiar el output
+const limpiarOutput = () => {
+  const divOutput = document.querySelector(".cont__output");
+  let salidaTexto = divOutput.querySelector(".salida_texto");
+  let tituloSalida = divOutput.querySelector(".titulo_salida");
 
+  if (salidaTexto && tituloSalida) {
+    salidaTexto.remove();
+    tituloSalida.remove();
+  }
+};
+
+//funcion para limpiar el input
+const limpiarInput = () => {
+  document.querySelector("#area__input").value = "";
+};
 //--------------------------------------------- //
 //             ANIMACIONES                      //
 //--------------------------------------------- //
 
 //animacion con libreria typed.js para texto en el header
-const typed = new Typed('.typedAnimado_header', {
+const typed = new Typed(".typedAnimado_header", {
   strings: [
     '<i class="animado">ENCRIPTAR</i>',
-    '<i class="animado">DESENCRIPTAR</i>'],
+    '<i class="animado">DESENCRIPTAR</i>',
+  ],
   typeSpeed: 100,
   loop: true,
   backSpeed: 100,
 });
 
-
 //animacion con libreria typed.js para la salidad del texto encriptado
-const typedOutput = ()=>{ new Typed('.salida_texto', {
-  strings: [
-    'Encriptando .',
-    '..',
-    'Encriptando ...',
-   
-   
-  ],
-  typeSpeed: 1,
-  loopCount: 1,
- 
-})};
-
-
-
-
+const typedOutput = () => {
+  new Typed(".salida_texto", {
+    strings: ["1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0", "0 1 0 1 0 1 0 1 0 1 ", "0 1 0 1 0 1 0 1 0 1 0 1 0 1"],
+    typeSpeed: 1,
+    loopCount: 1,
+  });
+};
