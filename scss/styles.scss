@@ -1,5 +1,6 @@
 @import "variables";
 @import "mixins";
+@import "fondoanimado";
 
 
 * {
@@ -10,9 +11,9 @@
 body,
 html {
   font-size: 16px;
-  background-color: $primary-color;
   min-height: 100 vh;
   overflow: hidden;
+  
 }
 h1 {
   @include titulo;

@@ -58,6 +58,8 @@ verificacioTexto();
 //                FUNCIONES                     //
 //--------------------------------------------- //
 
+
+
 //funcion para encriptar el texto ingresado
 const encriptacionTexto = () => {
   
