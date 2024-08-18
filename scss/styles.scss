@@ -237,6 +237,7 @@ img {
   //  CONTENEDOR SALIDA    //
   // ----------------------//
   .cont__output {
+    position: relative;
     height: 90%;
     width: 30%;
     display: flex;
@@ -281,6 +282,7 @@ img {
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      
     .salida_texto{
       
      word-wrap: break-word;
@@ -291,6 +293,22 @@ img {
     .titulo_salida{
       
       color: $secondary-color
+    }
+  }
+  .btn_copiar{
+    
+    position: absolute;
+    bottom: 2%;
+    right: 3%;
+    #btnCopiar{
+      width: 3rem;
+      @include movil {
+        width: 2rem;
+      }
+      @include tablet {
+        width: 2.5rem;
+      }
+      
     }
   }
   }

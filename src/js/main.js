@@ -115,7 +115,7 @@ const desencriptacionTexto = () => {
   matrizEncriptacion.forEach(([elemento, valor]) => {
     textoIngresado = textoIngresado.replace(new RegExp(elemento, "g"), valor);
     textoDesencriptado = textoIngresado;
-    console.log(' el texto desencriptado es ' + textoDesencriptado);
+   
     
   });
 
@@ -161,12 +161,13 @@ const popupOpen = () => {
   popup.classList.remove("show");
 };
 
-//funcion mostrar resultado en output
+//funcion mostrar resultado en output y copiar resultado en portapapeles
 const outputResult = () => {
   const divOutput = document.querySelector(".div_output");
   let salidaTexto = divOutput.querySelector(".salida_texto");
   let tituloSalida = divOutput.querySelector(".titulo_salida");
   const divImagenOutput = document.querySelector(".imagen_ouput");
+  const btnCopiar = document.querySelector("#btnCopiar");
 
   if (!salidaTexto) {
     salidaTexto = document.createElement("p");
@@ -186,21 +187,48 @@ const outputResult = () => {
       tituloSalida.textContent = "Texto encriptado";
       salidaTexto.textContent = textoEncriptado;
       divImagenOutput.setAttribute('style','display:none');
+      console.log('el texto a mostrar es ' + textoEncriptado);
+      console.log('dom boton copiar es ');
+      console.log(btnCopiar);
+      
+        
+        btnCopiar.addEventListener("click", (e) => {
+
+          console.log('se ejecuto la funcion copiar texto encriptar');
+          navigator.clipboard.writeText(salidaTexto.textContent);
+          console.log('el texto copiado es ' + salidaTexto.textContent);
+          
+          
+        });
+
+      
+
+      
 
     }else {
       if (clickDesencriptar==true) {
         tituloSalida.textContent = "Texto desencriptado";
         salidaTexto.textContent = textoDesencriptado;
         divImagenOutput.setAttribute('style','display:none');
+        console.log('el texto a mostrar es ' + textoDesencriptado);
+        console.log('dom boton copiar es ');
+        console.log(btnCopiar);
+       
+        btnCopiar.addEventListener("click", (e) => {
+
+          console.log('se ejecuto la funcion copiar texto desecnriptar');
+          navigator.clipboard.writeText(salidaTexto.textContent);
+        console.log('el texto copiado es ' + salidaTexto.textContent);
+
+        });
+        
       }
     }
     
 
   }, 5000);
-  console.log('click encriptar al finalizar  todas las tareas es es  ' + clickEncriptar);
   typedOutput();
-  console.log(textoEncriptado);
-  console.log(salidaTexto);
+ 
   
 };
 
@@ -238,7 +266,7 @@ const typed = new Typed(".typedAnimado_header", {
 //animacion con libreria typed.js para la salidad del texto encriptado
 const typedOutput = () => {
   new Typed(".salida_texto", {
-    strings: ["1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0", "0 1 0 1 0 1 0 1 0 1 ", "0 1 0 1 0 1 0 1 0 1 0 1 0 1"],
+    strings:['. . . . ','cargando por favor espere . . .','. . . .'],
     typeSpeed: 1,
     loopCount: 1,
   });
