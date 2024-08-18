@@ -226,7 +226,7 @@ const outputResult = () => {
     }
     
 
-  }, 5000);
+  }, 4000);
   typedOutput();
  
   
