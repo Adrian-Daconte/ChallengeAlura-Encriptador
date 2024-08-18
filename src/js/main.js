@@ -197,8 +197,9 @@ const outputResult = () => {
         btnCopiar.addEventListener("click", (e) => {
 
           console.log('se ejecuto la funcion copiar texto encriptar');
-          navigator.clipboard.writeText(salidaTexto.textContent);
-          console.log('el texto copiado es ' + salidaTexto.textContent);
+          navigator.clipboard.writeText(salidaTexto.textContent).then(() => {
+            alert('Texto copiado al portapapeles');
+          });
           
           
         });

@@ -11,7 +11,6 @@
 body,
 html {
   font-size: 16px;
-  min-height: 100 vh;
   overflow: hidden;
   
 }
@@ -117,8 +116,8 @@ img {
     padding-top: 1rem;
     gap: 1.5rem;
     flex-direction: column;
-    justify-content: space-around;
-    height: 80vh;
+  
+    height: 65vh;
     padding-bottom: 1rem;
   }
   @include tablet {
@@ -297,11 +296,12 @@ img {
     }
   }
   .btn_copiar{
-    
+    z-index: 10;
     position: absolute;
     bottom: 2%;
     right: 3%;
     #btnCopiar{
+      z-index: 10;
       width: 3rem;
       @include movil {
         width: 2rem;
@@ -362,11 +362,12 @@ img {
 // -----------------------//
 //        FOOTER        //
 // ----------------------//
-footer{
-  padding-bottom: env(safe-area-inset-bottom);
-  padding-bottom: 20px
-}
+
 .footer {
+
+  position: fixed;
+  bottom: 0;
+
   height: 7.5vh;
   width: 100%;
   display: flex;
