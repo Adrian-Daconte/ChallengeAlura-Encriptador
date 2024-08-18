@@ -58,6 +58,7 @@ img {
     object-fit: contain;
   }
 
+
   .logo_one {
     max-height: 100%;
     width: 10%;
@@ -383,7 +384,11 @@ img {
   
 
   .footer__text {
-    display: inline-block;
+    
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      align-items: center;
     span{
       color: $primary-color;
     }
