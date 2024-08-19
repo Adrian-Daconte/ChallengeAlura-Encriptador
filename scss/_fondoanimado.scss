@@ -14,3 +14,23 @@ html,body{
         background-position: 0% 50%;
     }
 }
+
+
+// fondo campo de estrellas 
+.space{
+   
+     width: var(--size);
+    height: var(--size);
+    background: white;
+    box-shadow:  var(--space-layer);
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 75%;
+    animation: moveStars var(--duration)linear infinite;
+}
+
+@keyframes moveStars{
+   from {transform: translateY(0);}
+    to {transform: translateY(-100vh);}
+}

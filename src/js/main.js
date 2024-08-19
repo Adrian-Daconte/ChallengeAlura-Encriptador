@@ -1,7 +1,10 @@
 import "../../scss/styles.scss"; //importando el archivo de estilos
 
 import Typed from "typed.js"; //importando la libreria typed.js para animaciones de texto
-
+import { generateSpaceLayer } from "./fondoanimado";
+generateSpaceLayer('1px','.space-1',200 ,'25s');
+generateSpaceLayer('2px','.space-2',50 ,'20s');
+generateSpaceLayer('4px','.space-3',20 ,'15s');
 //--------------------------------------------- //
 //                 VARIABLES                    //
 //--------------------------------------------- //

@@ -3,6 +3,7 @@
 @import "fondoanimado";
 
 
+
 * {
   margin: 0;
   padding: 0;
@@ -149,12 +150,7 @@ img {
       width: 80%;
     }
 
-    .instrucciones {
-      flex-grow: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+    
     .areaText {
       flex-grow: 6;
       box-sizing: border-box;
