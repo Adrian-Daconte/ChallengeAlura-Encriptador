@@ -10,116 +10,152 @@
     <title>ENCRIPTADOR-CHALLENGE</title>
   </head>
   <body>
-
-    
-<!-- Divs para animacion de estrellas  -->
-  <div class="space space-1"></div>
+    <!-- Divs para animacion de estrellas  -->
+    <div class="space space-1"></div>
     <div class="space space-2"></div>
-    <div class="space space-3"></div> <!-- Finaliza  Divs para animacion de estrellas  -->
-      
-    
+    <div class="space space-3"></div>
+    <!-- Finaliza  Divs para animacion de estrellas  -->
+
     <!-- Inicia Header  -->
-      <header>
-        <div class="header">
-          <img class="logo_one" src="src/assets/oracle-one-logo-blanco.svg" alt="logo one" >
-          <div class="separador"></div>
-          <img class="logo_alura" src="src/assets/alura-logo.1720710819.svg" alt="logo alura">
-          <div class="div_texto_animado"><p>En esta aplicación podras : <br> <span class="typedAnimado_header"></span> texto</p></div>
+    <header>
+      <div class="header">
+        <img
+          class="logo_one"
+          src="src/assets/oracle-one-logo-blanco.svg"
+          alt="logo one"
+        />
+        <div class="separador"></div>
+        <img
+          class="logo_alura"
+          src="src/assets/alura-logo.1720710819.svg"
+          alt="logo alura"
+        />
+        <div class="div_texto_animado">
+          <p>
+            En esta aplicación podras : <br />
+            <span class="typedAnimado_header"></span> texto
+          </p>
+        </div>
       </div>
-      </header><!-- Finaliza  Header  --> 
-      
-        <div class="contenedor__principal"> 
-  
-          <!-- animacion estrellas   -->
-  
-  
-          <!--contenedor entrada  -->
-          <div class="cont__input">
-            <div class="instrucciones">
-            </div>
-            <div class="areaText">
-              <textarea
-                id="area__input"
-                maxlength="350"
-                placeholder="Digita  aquí el texto a Encriptar o Desencriptar Max 350 caracteres "
-                wrap="soft"
-              ></textarea>
-             
-            </div>
-          </div><!-- Finaliza  contenedor entrada  -->
-  
-          <!-- Contenedor Botones  -->
-          <div class="cont__botones">
-            <div>
-              <h1>ENCRIPTADOR</h1>
-  
-              <div class="botones">
-                <button id="botonEncriptar">Encriptar</button>
-                <button id="botonDesencriptar" >Desencriptar</button>
-              </div>
-            </div>
-          </div><!-- Finaliza  Contenedor Botones  -->
-  
-          <!-- contenedor de salida -->
-          <div class="cont__output">
-              <div class="imagen_ouput"><img src="src/assets/undraw_secure_files_re_6vdh.svg" alt=""></div>
-              <div class="div_output"></div>
-              <div class="btn_copiar"><img  id="btnCopiar" src="src/assets/copy-svgrepo-com.svg" alt=""></div>
-          </div><!-- Finaliza  contenedor de Salida  -->
-  
-          <!-- Pop Up - Verificacion -->
-          <div class="popup show">
-            <div class="div-popup">
-             
-                <h2>Ups! no se cumple alguna de las siguientes condiciones</h2>
-                <hr />
-                <ul>
-                  <li><p>Únicamente letras minúsculas</p></li>
-                  <li>
-                    <p>
-                      No utilizar letras con acentos ni caracteres especiales
-                    </p>
-                  </li>
-                  <li><p>No se puede operar texto vacío</p></li>
-                </ul>
-              
-              <div class="closePopup"><h2>X Cerrar </h2></div>
-            </div>
-          </div> <!-- Finaliza  Popup  -->
-        </div> <!-- Finaliza contenedor principal -->
-        
-     
-  
-  
-      <!-- Footer -->
-      <footer>
-        <div class="footer">
-          <div class="footer__text">
-              <p>developed by : <span>Adrian Daconte @2024</span></p>
-              <div class="footer__logos">
-                <a href="https://www.linkedin.com/in/adrian-daconte/" target="_blank">
-                  
-                    <img class="logo_fotter" src="src/assets/linkedin-round-svgrepo-com.svg" alt="">
-                  
-                </a>
-                <a href="https://github.com/Adrian-Daconte" target="_blank">
-                  <img class="logo_fotter" src="src/assets/github-svgrepo-com.svg" alt="">
-                </a >
-              </div>
+    </header>
+    <!-- Finaliza  Header  -->
+
+    <div class="contenedor__principal">
+      <!-- animacion estrellas   -->
+
+      <!--contenedor entrada  -->
+      <div class="cont__input">
+        <div class="instrucciones"></div>
+        <div class="areaText">
+          <textarea
+            id="area__input"
+            placeholder="Digita  aquí el texto a Encriptar o Desencriptar  , no mayusculas , no caracteres especiales , no acentos , no numeros"
+            wrap="soft"
+          ></textarea>
+        </div>
+      </div>
+      <!-- Finaliza  contenedor entrada  -->
+
+      <!-- Contenedor Botones  -->
+      <div class="cont__botones">
+        <div>
+          <h1>ENCRIPTADOR</h1>
+
+          <div class="botones">
+            <button id="botonEncriptar">Encriptar</button>
+            <button id="botonDesencriptar">Desencriptar</button>
           </div>
-          <div class="Footer__tecnologias">
-              
-              <div class="footer__logos">
-                <img src="src/assets/html-5-svgrepo-com.svg" class="logo_fotter" alt="">
-                <img src="src/assets/javascript-svgrepo-com.svg" class="logo_fotter" alt="">
-                <img src="src/assets/sass-svgrepo-com.svg" class="logo_fotter" alt="">
-                <img src="src/assets/vite-svgrepo-com.svg" class="logo_fotter" alt="">
-              </div>
+        </div>
+      </div>
+      <!-- Finaliza  Contenedor Botones  -->
+
+      <!-- contenedor de salida -->
+      <div class="cont__output">
+        <div class="imagen_ouput">
+          <img src="src/assets/undraw_secure_files_re_6vdh.svg" alt="" />
+        </div>
+        <div class="div_output">
+          <textarea class="area_salida" readonly id="" wrap="soft"></textarea>
+        </div>
+        <div class="btn_copiar">
+          <img id="btnCopiar" src="src/assets/copy-svgrepo-com.svg" alt="" />
+        </div>
+      </div>
+      <!-- Finaliza  contenedor de Salida  -->
+
+      <!-- Pop Up - Verificacion -->
+      <div class="popup show">
+        <div class="div-popup">
+          <h2>Ups! no se cumple alguna de las siguientes condiciones</h2>
+          <hr />
+          <ul>
+            <li><p>Únicamente letras minúsculas</p></li>
+            <li>              <p>No utilizar letras con acentos ni caracteres especiales</p>            </li>
+            
+            <li><p>No numeros</p></li>
+            <li><p>No se puede operar texto vacío</p></li>
+          </ul>
+
+          <div class="closePopup"><h2>X Cerrar</h2></div>
+        </div>
+      </div>
+      <!-- Finaliza  Popup  -->
+    </div>
+    <!-- Finaliza contenedor principal -->
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer">
+        <div class="footer__text">
+          <p>developed by : <span>Adrian Daconte @2024</span></p>
+          <div class="footer__logos">
+            <a
+              href="https://www.linkedin.com/in/adrian-daconte/"
+              target="_blank"
+            >
+              <img
+                class="logo_fotter"
+                src="src/assets/linkedin-round-svgrepo-com.svg"
+                alt=""
+              />
+            </a>
+            <a href="https://github.com/Adrian-Daconte" target="_blank">
+              <img
+                class="logo_fotter"
+                src="src/assets/github-svgrepo-com.svg"
+                alt=""
+              />
+            </a>
           </div>
-      </div><!-- Finaliza  footer  -->
-          
-      </footer>
-  
-   <script type="module" src="src/js/main.js"></script>
+        </div>
+        <div class="Footer__tecnologias">
+          <div class="footer__logos">
+            <img
+              src="src/assets/html-5-svgrepo-com.svg"
+              class="logo_fotter"
+              alt=""
+            />
+            <img
+              src="src/assets/javascript-svgrepo-com.svg"
+              class="logo_fotter"
+              alt=""
+            />
+            <img
+              src="src/assets/sass-svgrepo-com.svg"
+              class="logo_fotter"
+              alt=""
+            />
+            <img
+              src="src/assets/vite-svgrepo-com.svg"
+              class="logo_fotter"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+      <!-- Finaliza  footer  -->
+    </footer>
+
+    <script type="module" src="src/js/main.js"></script>
   </body>
 </html>

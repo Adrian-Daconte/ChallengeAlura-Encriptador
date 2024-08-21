@@ -2,8 +2,6 @@
 @import "mixins";
 @import "fondoanimado";
 
-
-
 * {
   margin: 0;
   padding: 0;
@@ -13,13 +11,11 @@ body,
 html {
   font-size: 16px;
   overflow: hidden;
-  
 }
 h1 {
   @include titulo;
   text-align: center;
   letter-spacing: 0.1rem;
- 
 }
 h2 {
   @include subtitulo;
@@ -59,7 +55,6 @@ img {
     object-fit: contain;
   }
 
-
   .logo_one {
     max-height: 100%;
     width: 10%;
@@ -81,7 +76,6 @@ img {
     }
   }
 
-
   .separador {
     height: 100%;
     width: 2px;
@@ -93,12 +87,11 @@ img {
     height: 10vh;
   }
 
-  .div_texto_animado{
+  .div_texto_animado {
     margin-left: auto;
-    .typedAnimado_header{
+    .typedAnimado_header {
       color: $secondary-color;
       font-weight: bold;
-
     }
   }
 }
@@ -118,7 +111,7 @@ img {
     padding-top: 1rem;
     gap: 1.5rem;
     flex-direction: column;
-  
+
     height: 65vh;
     padding-bottom: 1rem;
   }
@@ -144,13 +137,11 @@ img {
 
     @include movil {
       width: 90%;
-      
     }
     @include tablet {
       width: 80%;
     }
 
-    
     .areaText {
       flex-grow: 6;
       box-sizing: border-box;
@@ -174,6 +165,25 @@ img {
         caret-color: $secondary-color;
         border-radius: 12px;
         background-color: $tertiary-color;
+        scrollbar-color: $primary-color $tertiary-color;
+        scrollbar-width: auto;
+        overflow-y: scroll;
+
+        /* Personalización de la barra de desplazamiento para navegadores basados en WebKit */
+        &::-webkit-scrollbar {
+          width: 12px; /* Ancho de la barra de desplazamiento */
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background-color: $secondary-color; /* Color del pulgar de la barra de desplazamiento */
+          border-radius: 10px; /* Radio del borde del pulgar */
+          border: 3px solid $tertiary-color; /* Borde alrededor del pulgar */
+        }
+
+        &::-webkit-scrollbar-track {
+          background-color: $tertiary-color; /* Color de la pista de la barra de desplazamiento */
+          border-radius: 10px; /* Radio del borde de la pista */
+        }
       }
     }
   }
@@ -188,8 +198,6 @@ img {
     justify-content: center;
 
     @include movil {
-      
-      
       width: 60%;
     }
     @include tablet {
@@ -199,7 +207,6 @@ img {
     h1 {
       @include titulo;
       text-shadow: rgba(0, 0, 0, 0.67) 0px 10px 24px;
-      
     }
 
     .botones {
@@ -239,11 +246,9 @@ img {
     width: 30%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    padding: 2%;
+    padding: 1%;
 
-    order: 3;
     background-color: $tertiary-color;
 
     -webkit-box-shadow: 10px 10px 11px 0px rgba(0, 0, 0, 0.36);
@@ -251,64 +256,90 @@ img {
     box-shadow: 10px 10px 11px 0px rgba(0, 0, 0, 0.36);
     border-radius: 16px;
 
-    
-   
     @include movil {
       width: 90%;
       height: 60%;
-      
     }
     @include tablet {
       width: 80%;
-      
     }
-    .imagen_ouput{
-      width: 100%;
+    .imagen_ouput {
+      width: 90%;
       @include movil {
-        width: 50%;
+        width: 40%;
       }
       @include tablet {
         width: 40%;
       }
-      
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       object-fit: contain;
     }
-    .div_output{
-      
+    .div_output {
+      width: 100%;
+      height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
-      
-    .salida_texto{
-      
-     word-wrap: break-word;
-     word-break: break-all;
-      color: $primary-color;
 
+      .area_salida {
+        display: none;
+        order: 2;
+        height: 90%;
+        width: 100%;
+        border: none;
+        color: $primary-color;
+        font-family: $fuente-texto;
+        outline: none;
+        text-align: center;
+        padding: 2%;
+        resize: none;
+        border-radius: 12px;
+        background-color: $tertiary-color;
+        scrollbar-color: $secondary-color $tertiary-color;
+        scrollbar-width: auto;
+        overflow-y: scroll;
+
+        /* Personalización de la barra de desplazamiento para navegadores basados en WebKit */
+        &::-webkit-scrollbar {
+          width: 12px; /* Ancho de la barra de desplazamiento */
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background-color: $secondary-color; /* Color del pulgar de la barra de desplazamiento */
+          border-radius: 10px; /* Radio del borde del pulgar */
+          border: 3px solid $tertiary-color; /* Borde alrededor del pulgar */
+        }
+
+        &::-webkit-scrollbar-track {
+          background-color: $tertiary-color; /* Color de la pista de la barra de desplazamiento */
+          border-radius: 10px; /* Radio del borde de la pista */
+        }
+      }
+
+      .titulo_salida {
+        color: $secondary-color;
+      }
     }
-    .titulo_salida{
-      
-      color: $secondary-color
-    }
-  }
-  .btn_copiar{
-    z-index: 10;
-    position: absolute;
-    bottom: 2%;
-    right: 3%;
-    #btnCopiar{
+    .btn_copiar {
       z-index: 10;
-      width: 3rem;
-      @include movil {
-        width: 2rem;
+      margin-left: auto;
+      bottom: 0;
+      right: 0;
+
+      #btnCopiar {
+        z-index: 10;
+        width: 3rem;
+        @include movil {
+          width: 2rem;
+        }
+        @include tablet {
+          width: 2.5rem;
+        }
       }
-      @include tablet {
-        width: 2.5rem;
-      }
-      
     }
-  }
   }
   // ----------------------//
   //        POP UP         //
@@ -326,20 +357,17 @@ img {
     width: max-content + 20px;
     transform: translate(-50%, -50%);
     gap: 1rem;
-    
+
     @include movil {
       width: 90vw;
-      
     }
     @include tablet {
       width: 80vw;
     }
-    ul{
-      list-style-type:none;
+
+    p {
+      color: $primary-color;
     }
-   p{
-    color: $primary-color;
-   }
   }
 
   .show {
@@ -361,7 +389,6 @@ img {
 // ----------------------//
 
 .footer {
-
   position: fixed;
   bottom: 0;
 
@@ -377,30 +404,27 @@ img {
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  
 
   .footer__text {
-    
-      display: flex;
-      gap: 0.5rem;
-      justify-content: center;
-      align-items: center;
-    span{
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    span {
       color: $primary-color;
     }
-  
   }
   @include movil {
     height: 10vh;
   }
 
-  .footer__logos{
+  .footer__logos {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1rem;
 
-    .logo_fotter{
+    .logo_fotter {
       width: 1rem;
     }
   }

@@ -1,14 +1,15 @@
 import "../../scss/styles.scss"; //importando el archivo de estilos
 
 import Typed from "typed.js"; //importando la libreria typed.js para animaciones de texto
-import { generateSpaceLayer } from "./fondoanimado";
-generateSpaceLayer('1px','.space-1',200 ,'25s');
-generateSpaceLayer('2px','.space-2',50 ,'20s');
-generateSpaceLayer('4px','.space-3',20 ,'15s');
+import { generateSpaceLayer } from "./fondoanimado"; //importando la funcion para generar el fondo animado
+generateSpaceLayer("1px", ".space-1", 200, "25s"); //generando las capas de fondo animado
+generateSpaceLayer("2px", ".space-2", 50, "20s");
+generateSpaceLayer("4px", ".space-3", 20, "15s");
+
+//------------------VARIABLES------------------- //
+//                                              //
 //--------------------------------------------- //
-//                 VARIABLES                    //
-//--------------------------------------------- //
-const expresionRegular = /^[a-z\s]+$/; //expresion regular para validar el texto ingresado3
+const expresionRegular = /^(?!\s*$)[a-z\s]+$/; //expresion regular para validar el texto ingresado y que no este vacio
 const botonEncriptar = document.querySelector("#botonEncriptar"); //DOM boton encriptar
 const botonDesencriptar = document.querySelector("#botonDesencriptar"); //DOM boton desencriptar
 let textoIngresado = ""; //DOM texto ingresado
@@ -16,16 +17,27 @@ let textoEncriptado = []; //variable para almacenar el texto encriptado
 let textoDesencriptado = []; //variable para almacenar el texto desencriptado
 const popup = document.querySelector(".popup"); //DOM popup
 const btnClosePopup = document.querySelector(".closePopup"); //DOM btn cerrar popup
-let clickEncriptar = undefined;
-let clickDesencriptar = undefined;
+let salida = document.querySelector(".area_salida"); //DOM texto de salida
+const btnCopiar = document.querySelector("#btnCopiar"); //DOM btn copiar
+let clickEncriptar = undefined; //variable para verificar si se hizo click en encriptar
+let clickDesencriptar = undefined; //variable para verificar si se hizo click en desencriptar
+const divOutput = document.querySelector(".div_output"); //DOM div output
+let tituloSalida = divOutput.querySelector(".titulo_salida"); //DOM titulo salida
+let areaSalida = divOutput.querySelector(".area_salida"); //DOM area salida
+const divImagenOutput = document.querySelector(".imagen_ouput"); //DOM div imagen output
 
-
-
+//----------------- ADD EVENT LISTENER  ------- //
+//                                              //
 //--------------------------------------------- //
-//              ADD EVENT LISTENER              //
-//--------------------------------------------- //
 
-//evento para limpiar el input al cargar la pagina
+//evento para copiar el texto de salida
+btnCopiar.addEventListener("click", (e) => {
+  copiarTexto();
+  limpiarInput();
+  limpiarOutput();
+});
+
+//evento para limpiar input y output al cargar la pagina
 addEventListener("DOMContentLoaded", (e) => {
   limpiarInput();
   limpiarOutput();
@@ -38,36 +50,37 @@ btnClosePopup.addEventListener("click", (e) => {
 
 //btn encriptar
 botonEncriptar.addEventListener("click", (e) => {
-  ;
   clickEncriptar = true;
   clickDesencriptar = false;
-  limpiarOutput();
   verificacioTexto();
-  console.log('click encriptar es ' + clickEncriptar);
- 
-  
-  
 });
 
 //btn desencriptar
 botonDesencriptar.addEventListener("click", (e) => {
   clickDesencriptar = true;
   clickEncriptar = false;
-  limpiarOutput();
-verificacioTexto();
+  verificacioTexto();
 });
 
-//--------------------------------------------- //
-//                FUNCIONES                     //
+//-------------------FUNCIONES -------------- //
+//                                             //
 //--------------------------------------------- //
 
-
+//funcion para copiar el texto de salida
+const copiarTexto = () => {
+  navigator.clipboard
+    .writeText(areaSalida.value)
+    .then(() => {
+      alert("Texto copiado al portapapeles");
+    })
+    .catch((err) => {
+      console.log("Error al copiar el texto", err);
+    });
+};
 
 //funcion para encriptar el texto ingresado
 const encriptacionTexto = () => {
-  
   textoEncriptado = [];
-  textoIngresado = document.querySelector("#area__input").value;
   textoIngresado = textoIngresado.split("");
   textoIngresado
     .map((letra) => {
@@ -75,40 +88,29 @@ const encriptacionTexto = () => {
       switch (letra) {
         case "a":
           return textoEncriptado.push("ai");
-          break;
 
         case "e":
           return textoEncriptado.push("enter");
-          break;
 
         case "i":
           return textoEncriptado.push("imes");
-          break;
 
         case "o":
           return textoEncriptado.push("ober");
-          break;
         case "u":
           return textoEncriptado.push("ufat");
-          break;
 
         default:
           return textoEncriptado.push(letra);
-          break;
       }
     })
     .join("");
 
   return (textoEncriptado = textoEncriptado.join(""));
-  console.log(textoEncriptado);
 };
 
 //funcion para desencriptar el texto ingresado
 const desencriptacionTexto = () => {
-  
-  textoIngresado = document.querySelector("#area__input").value;
-
-
   const matrizEncriptacion = [
     ["ai", "a"],
     ["enter", "e"],
@@ -120,45 +122,29 @@ const desencriptacionTexto = () => {
   matrizEncriptacion.forEach(([elemento, valor]) => {
     textoIngresado = textoIngresado.replace(new RegExp(elemento, "g"), valor);
     textoDesencriptado = textoIngresado;
-   
-    
   });
-
-
-
 };
 
 //funcion para verificar si el texto ingresado es valido
 const verificacioTexto = () => {
   textoIngresado = document.querySelector("#area__input").value;
-  console.log("el texto recibido es " + textoIngresado);
-
-  
 
   if (expresionRegular.test(textoIngresado)) {
-    console.log("el texto es valido");
-    if (clickEncriptar==true) {
-     
+    if (clickEncriptar == true) {
       encriptacionTexto();
       outputResult();
-      console.log('click encriptar en verificacion es ' + clickEncriptar);
-      
-    } else { 
-    if (clickDesencriptar==true) {
-      desencriptacionTexto();
-      outputResult();
-      
     } else {
-      
+      if (clickDesencriptar == true) {
+        desencriptacionTexto();
+        outputResult();
+      } else {
+      }
     }
-    }
-  }
-  else {
-    console.log("el texto NO es valido");
+  } else {
     popupOpen();
     limpiarInput();
+    limpiarOutput();
   }
-
 };
 
 //funcion abrir popup
@@ -166,94 +152,57 @@ const popupOpen = () => {
   popup.classList.remove("show");
 };
 
-//funcion mostrar resultado en output y copiar resultado en portapapeles
+//funcion mostrar resultado en output
 const outputResult = () => {
-  const divOutput = document.querySelector(".div_output");
-  let salidaTexto = divOutput.querySelector(".salida_texto");
-  let tituloSalida = divOutput.querySelector(".titulo_salida");
-  const divImagenOutput = document.querySelector(".imagen_ouput");
-  const btnCopiar = document.querySelector("#btnCopiar");
-
-  if (!salidaTexto) {
-    salidaTexto = document.createElement("p");
+  //condicional para crear el titulo salida encriptado/desencriptado
+  if (!tituloSalida) {
     tituloSalida = document.createElement("h2");
-    salidaTexto.classList.add("salida_texto");
     tituloSalida.classList.add("titulo_salida");
     divOutput.appendChild(tituloSalida);
-    divOutput.appendChild(salidaTexto);
-    
-  
   }
-  setTimeout(() => {
-    
-    console.log('click encriptar en output es ' + clickEncriptar);
-    if ( clickEncriptar==true){
 
-      tituloSalida.textContent = "Texto encriptado";
-      salidaTexto.textContent = textoEncriptado;
-      divImagenOutput.setAttribute('style','display:none');
-      console.log('el texto a mostrar es ' + textoEncriptado);
-      console.log('dom boton copiar es ');
-      console.log(btnCopiar);
-      
-        
-        btnCopiar.addEventListener("click", (e) => {
-          console.log('se ejecuto la funcion copiar texto encriptar');
-          navigator.clipboard.writeText(salidaTexto.textContent).then(() => {
-            alert('Texto copiado al portapapeles');
-          });
-          
-          
-        });
+  if (clickEncriptar == true) {
+    divImagenOutput.setAttribute("style", "display:none");
+    areaSalida.setAttribute("style", "display:block");
+    areaSalida.value = textoEncriptado;
+    tituloSalida.textContent = "Texto encriptado";
 
-      
+    if (areaSalida.value != "") {
+      btnCopiar.setAttribute("style", "display:block");
+    }
+  } else {
+    if (clickDesencriptar == true) {
+      divImagenOutput.setAttribute("style", "display:none");
+      areaSalida.setAttribute("style", "display:block");
+      areaSalida.value = textoDesencriptado;
+      tituloSalida.textContent = "Texto desencriptado";
 
-      
-
-    }else {
-      if (clickDesencriptar==true) {
-        tituloSalida.textContent = "Texto desencriptado";
-        salidaTexto.textContent = textoDesencriptado;
-        divImagenOutput.setAttribute('style','display:none');
-        console.log('el texto a mostrar es ' + textoDesencriptado);
-        console.log('dom boton copiar es ');
-        console.log(btnCopiar);
-       
-        btnCopiar.addEventListener("click", (e) => {
-          console.log('se ejecuto la funcion copiar texto desecnriptar');
-          navigator.clipboard.writeText(salidaTexto.textContent);
-        console.log('el texto copiado es ' + salidaTexto.textContent);
-
-        });
-        
+      if (areaSalida.value != "") {
+        btnCopiar.setAttribute("style", "display:block");
       }
     }
-    
-
-  }, 4000);
-  typedOutput();
- 
-  
-};
-
-//funcion para limpiar el output
-const limpiarOutput = () => {
-  const divOutput = document.querySelector(".cont__output");
-  let salidaTexto = divOutput.querySelector(".salida_texto");
-  let tituloSalida = divOutput.querySelector(".titulo_salida");
-
-  if (salidaTexto && tituloSalida) {
-    salidaTexto.remove();
-    tituloSalida.remove();
   }
 };
 
 //funcion para limpiar el input
 const limpiarInput = () => {
   document.querySelector("#area__input").value = "";
+  btnCopiar.setAttribute("style", "display:none");
 };
-//--------------------------------------------- //
-//             ANIMACIONES                      //
+
+//funcion para limpiar el output
+const limpiarOutput = () => {
+  setTimeout(() => {
+    areaSalida.value = "";
+    divImagenOutput.setAttribute("style", "display:block");
+    areaSalida.setAttribute("style", "display:none");
+    tituloSalida.textContent = "";
+    btnCopiar.setAttribute("style", "display:none");
+  }, 300);
+};
+
+//------------------------ANIMACIONES------------- //
+//                                                //
 //--------------------------------------------- //
 
 //animacion con libreria typed.js para texto en el header
@@ -266,12 +215,3 @@ const typed = new Typed(".typedAnimado_header", {
   loop: true,
   backSpeed: 100,
 });
-
-//animacion con libreria typed.js para la salidad del texto encriptado
-const typedOutput = () => {
-  new Typed(".salida_texto", {
-    strings:['. . . . ','cargando por favor espere . . .','. . . .'],
-    typeSpeed: 1,
-    loopCount: 1,
-  });
-};
