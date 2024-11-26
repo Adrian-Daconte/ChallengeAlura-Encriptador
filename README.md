@@ -1,17 +1,12 @@
 <h1 align="center">Encriptador de Texto</h1>
-
 <p align="center">
   Este es un proyecto elaborado para el reto propuesto en el curso de Alura Latam y el programa Next One Generation. Cuenta con un diseño responsivo para cualquier dispositivo. Utilizamos Vite para optimizar el desarrollo y la construcción del proyecto.
 </p>
-
 <p align="center">
-  <img src="https://img.shields.io/badge/status-en%20desarrollo-yellow" alt="status"/>
+  <img src="https://img.shields.io/badge/status-versión%201.0-blue" alt="status"/>
   <img src="https://img.shields.io/badge/license-MIT-blue" alt="license"/>
 </p>
 
-<h4 align="center">
-👷 PROYECTO EN CONSTRUCCIÓN 👷
-</h4>
 
 ## 📑 Índice
 - [Desplegado en Vercel](#-desplegado-en-vercel)
@@ -21,7 +16,6 @@
 - [Cómo Funciona](#-cómo-funciona)
 - [Tecnologías](#-tecnologías)
 - [Librerías Utilizadas](#-librerías-utilizadas)
-
 
 ## 🌐 Desplegado en Vercel
 <p align="center">
@@ -50,8 +44,8 @@
 
 ---
 
-## Cómo Funciona❓ 
-Se cuenta con un input para ingresar el texto que se quiere encriptar o desencriptar. Al presionar el botón correspondiente, se genera en un contenedor de salida el resultado deseado.
+## Cómo Funciona
+❓ Se cuenta con un input para ingresar el texto que se quiere encriptar o desencriptar. Al presionar el botón correspondiente, se genera en un contenedor de salida el resultado deseado.
 
 ---
 
@@ -73,11 +67,7 @@ Se cuenta con un input para ingresar el texto que se quiere encriptar o desencri
 
 ---
 
-
 <p align="center">
-  <img src="https://img.shields.io/badge/status-en%20desarrollo-yellow" alt="status"/>
+  <img src="https://img.shields.io/badge/status-versión%201.0-yellow" alt="status"/>
   <img src="https://img.shields.io/badge/license-MIT-blue" alt="license"/>
 </p>
-<h4 align="center">
-👷 PROYECTO EN CONSTRUCCIÓN 👷
-</h4>
